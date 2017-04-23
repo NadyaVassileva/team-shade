@@ -2,5 +2,5 @@
 
 Team Members
 
-1. Ivan Petrov
-2. Nadya Vassileva
+1. Ivan Petrov [tinman]
+2. Nadya Vassileva [nadeto13]

@@ -12,9 +12,9 @@ SystemJS.config({
         'templateLoader': './scripts/templates.js',
 
         //Main
-        'sammyApp': '/scripts/sammyApp.js',
+        'app': '/scripts/app.js',
     },
         'transpiler': 'plugin-babel',
 });
 
-System.import('sammyApp');
+System.import('app');

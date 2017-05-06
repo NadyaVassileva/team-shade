@@ -4,9 +4,9 @@ import templates from 'templateLoader';
 
 var sammyApp = Sammy('container', function() {
   let $container = $('#container');
-  this.get('#/', function() {
-      this.redirect('#/home');
-  });
+  // this.get('#/', function() {
+  //     this.redirect('#/home');
+  // });
 
   //FIX ME
   //seems that redirect does not triger
@@ -35,4 +35,4 @@ var sammyApp = Sammy('container', function() {
   });
 });
 
-sammyApp.run('#/');
+sammyApp.run('#/home');

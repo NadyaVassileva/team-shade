@@ -9,8 +9,8 @@ SystemJS.config({
         'handlebars': './node_modules/handlebars/handlebars.js',
 
         //Utils
-        'templateLoader': './js/templates.js',
-        'requester' : './utils/requester.js',
+        'templateLoader': './js/utils/template-loader.js',
+        'requester' : '.js/utils/requester.js',
 
         //Main
         'app': '/js/app.js',

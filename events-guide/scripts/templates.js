@@ -37,7 +37,7 @@ export default {
                 error: function(err) {
                     reject(err);
                 }
-            })
-        })
+            });
+        });
     }
 }

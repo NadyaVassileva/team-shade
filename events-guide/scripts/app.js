@@ -5,7 +5,7 @@ import templates from 'templateLoader';
 var sammyApp = Sammy('container', function () {
     let $container = $('#container');
     this.get('#/', function () {
-        this.redirect('#/home')
+        this.redirect('#/home');
     });
     this.get('#/home', function () {
         templates.load('home')

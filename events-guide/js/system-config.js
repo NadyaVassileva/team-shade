@@ -9,11 +9,11 @@ SystemJS.config({
         'handlebars': './node_modules/handlebars/handlebars.js',
 
         //Utils
-        'templateLoader': './scripts/templates.js',
+        'templateLoader': './js/templates.js',
         'requester' : './utils/requester.js',
 
         //Main
-        'app': '/scripts/app.js',
+        'app': '/js/app.js',
     },
         'transpiler': 'plugin-babel',
 });

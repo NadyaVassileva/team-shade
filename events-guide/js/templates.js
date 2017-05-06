@@ -26,7 +26,7 @@ const handlebars = window.handlebars || window.Handlebars,
 
 export default {
     load: function (name) {
-        let url = '/scripts/templates/' + name +'.handlebars';
+        let url = '/templates/' + name +'.handlebars';
 
         return new Promise(function(resolve, reject) {
             $.ajax({

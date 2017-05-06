@@ -1,7 +1,7 @@
 import 'jquery';
 import Sammy from 'sammy';
-
-import templates from 'templateLoader';
+import * as template from 'templateLoader';
+import * as homeController from 'homeController';
 
 var sammyApp = Sammy('#container', function () {
   let $container = $('#container');
@@ -10,8 +10,8 @@ var sammyApp = Sammy('#container', function () {
   });
 
   //need to refactor to controllers
-  this.get('#/home', function () {
-    templates.load('home')
+  this.get('#/home', /*homeController.get*/function () {
+    template.load('home')
       .then(function (templateHtml) {
         $container.html(templateHtml);
       });
@@ -23,14 +23,14 @@ var sammyApp = Sammy('#container', function () {
 
   this.route('#/login', function () {
     console.log("login");
-    templates.load('login')
+    template.load('login')
       .then(function (templateHtml) {
         $container.html(templateHtml);
       });
   });
 
   this.get('#/login', function () {
-    templates.load('login')
+    template.load('login')
       .then(function (templateHtml) {
         $container.html(templateHtml);
       });

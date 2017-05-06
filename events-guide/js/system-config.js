@@ -6,11 +6,16 @@ SystemJS.config({
         //Libraries
         'jquery': './node_modules/jquery/dist/jquery.js',
         'sammy': './node_modules/sammy/lib/sammy.js',
-        'handlebars': './node_modules/handlebars/handlebars.js',
+        //not AMD handlebars!
+        'handlebars': './node_modules/handlebars/dist/handlebars.js',
 
         //Utils
-        'templateLoader': './js/utils/template-loader.js',
-        'requester' : '.js/utils/requester.js',
+        'templateLoader': '/js/utils/template-loader.js',
+        'requester' : '/js/utils/requester.js',
+        'data': 'js/utils/data.js',
+
+        //Controllers
+        'homeController':'/js/controllers/home-controller.js',
 
         //Main
         'app': '/js/app.js',

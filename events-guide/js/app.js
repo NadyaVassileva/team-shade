@@ -10,19 +10,13 @@ var sammyApp = Sammy('#container', function () {
   });
 
   //need to refactor to controllers
-  this.get('#/home', /*homeController.get*/function () {
-    template.load('home')
-      .then(function (templateHtml) {
-        $container.html(templateHtml);
-      });
-  });
+  this.get('#/home', homeController.get);
 
   this.get('#/cinema', () => {
-    console.log("CINEMA");
+    // console.log("CINEMA");
   });
 
   this.route('#/login', function () {
-    console.log("login");
     template.load('login')
       .then(function (templateHtml) {
         $container.html(templateHtml);

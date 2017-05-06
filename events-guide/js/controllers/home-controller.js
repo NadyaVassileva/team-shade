@@ -1,19 +1,25 @@
 import * as data from 'data';
+import * as template from 'templateLoader';
 
 
-import { load as loadTemplate } from 'templateLoader';
+const $container = $('#container');
 
+export function get(params) {
 
-// const $container = $('#container');
+    //if public
+    template.load('home')
+        .then(templateHTML => {
+            $container.html(templateHTML);
+        });
 
-// export function get(params) {
+    //user-specific -> 
 
-//     Promise.all([
-//         loadTemplate("home"),
-//         /*data.getCookies() to be added*/
-//     ])
-//         .then(([template, cookies]) => {
-//             $container.html(template(cookies));
+    // Promise.all([
+    //     template.generate("home")
+    //     /*,data.getPublicEvents() to be added*/
+    // ])
+    //     .then(([templateFunction/*, events*/]) => {
+    //         $container.html(templateFunction());
 
-//         });
-// }
+    //     });
+}

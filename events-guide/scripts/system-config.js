@@ -10,6 +10,7 @@ SystemJS.config({
 
         //Utils
         'templateLoader': './scripts/templates.js',
+        'requester' : './utils/requester.js',
 
         //Main
         'app': '/scripts/app.js',

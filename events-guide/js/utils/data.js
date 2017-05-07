@@ -25,8 +25,8 @@ var app = {
       .then(function() {
         location.replace('#/home');
         console.log("User is logged!!!");
-        $('#logout-button').removeClass('hidden')
-        $('#login-button').addClass('hidden')
+        $('#logout-button').removeClass('hidden');
+        $('#login-button').addClass('hidden');
 
         //$('#logout-button').addClass('hidden');
       })
@@ -34,6 +34,25 @@ var app = {
         $('#login-error').html('<p>' + error.message + '</p>').show(0);
       });
     },
+    
+    findEvents: function() {
+    // return all event from the base        
+    var allData = Kinvey.DataStore.collection('events');
+
+      return allData.find();
+
+    },
+
+    findEventsByCategory: function(category) {
+    // return all event from the base        
+    var allData = Kinvey.DataStore.collection('events');
+    var query = new Kinvey.Query();
+
+    query.equalTo('category', `${category}`);
+    
+    return allData.find(query); 
+    },
+
 };
 
 // Bind events

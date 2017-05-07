@@ -1,0 +1,24 @@
+<div id="events-table" class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Place</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each events}}
+            <tr>
+                <td>{{this.category}}</td>
+                <td>{{this.name}}</td>
+                {{#if this.description}}
+                    <td>{{this.description}}</td>
+                {{/if}}
+                <td>{{this.place }}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

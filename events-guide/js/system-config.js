@@ -20,6 +20,7 @@ SystemJS.config({
         //Controllers
         'homeController':'/js/controllers/home-controller.js',
         'userController':'/js/controllers/user-controller.js',
+        'eventsController':'/js/controllers/events-controller.js',
 
         //Main
         'app': '/js/app.js',

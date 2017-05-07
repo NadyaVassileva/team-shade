@@ -13,6 +13,7 @@
     "bootstrap": "^3.3.7",
     "handlebars": "^4.0.8",
     "jquery": "^3.2.1",
+    "kinvey-html5-sdk": "^3.5.0",
     "sammy": "^0.7.6",
     "systemjs": "^0.20.12",
     "systemjs-plugin-babel": "0.0.21"

@@ -7,7 +7,7 @@ export function load(templateName) {
     return requester.get(`templates/${templateName}.handlebars`);
 }
 
-export function generate(templateHTML) {
+export function generate(templateName) {
     if (cacheObj.hasOwnProperty(templateName)) {
         return Promise.resolve(cacheObj[templateName]);
     }

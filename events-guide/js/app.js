@@ -2,6 +2,9 @@ import 'jquery';
 import Sammy from 'sammy';
 import * as template from 'templateLoader';
 import * as homeController from 'homeController';
+import { userLogin } from 'userController';
+import { userLogout } from 'userController';
+import { app } from 'data';
 
 var sammyApp = Sammy('#container', function () {
   let $container = $('#container');
@@ -16,18 +19,24 @@ var sammyApp = Sammy('#container', function () {
     // console.log("CINEMA");
   });
 
-  this.route('#/login', function () {
-    template.load('login')
-      .then(function (templateHtml) {
-        $container.html(templateHtml);
-      });
+  // this.route('#/login', function () {
+  //   template.load('login')
+  //     .then(function (templateHtml) {
+  //       $container.html(templateHtml);
+  //     });
+  // });
+
+  this.get('#/login', function (context) {
+      userLogin(context);
   });
 
-  this.get('#/login', function () {
-    template.load('login')
-      .then(function (templateHtml) {
-        $container.html(templateHtml);
-      });
+  $('#logout-button').on('click', function(event) {
+      event.preventDefault();
+      Kinvey.User.logout()
+      .then(response => {
+        $('#logout-button').addClass('hidden');
+        $('#login-button').removeClass('hidden')
+    });
   });
 
 });

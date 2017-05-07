@@ -29,3 +29,7 @@ body {
 .panel-error > p {
   margin: 0;
 }
+
+.hidden {
+  display: none;
+}

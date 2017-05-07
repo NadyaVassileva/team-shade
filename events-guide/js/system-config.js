@@ -9,6 +9,9 @@ SystemJS.config({
         //not AMD handlebars!
         'handlebars': './node_modules/handlebars/dist/handlebars.js',
 
+        //Data
+        'Kinvey': 'js/utils/kinvey-html5-sdk.min.js',
+
         //Utils
         'templateLoader': '/js/utils/template-loader.js',
         'requester' : '/js/utils/requester.js',
@@ -16,6 +19,7 @@ SystemJS.config({
 
         //Controllers
         'homeController':'/js/controllers/home-controller.js',
+        'userController':'/js/controllers/user-controller.js',
 
         //Main
         'app': '/js/app.js',

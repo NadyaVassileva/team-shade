@@ -28,3 +28,15 @@ export function findEventsByLocation(filter) {
     return requester.get(url, headers);
 
 }
+
+
+/*
+ PUT to /appdata/:appKey/:collectionName/:id, lets an app update a previously created entity.
+
+Currently there is no way to pass only the attributes you want changed. 
+
+The entire JSON body is stored as passed in the request body. 
+*/
+
+//Auth-Token
+//Kinvey 7cf37fbc-9850-48b7-b75d-576212ee36b0.v5mfEZVYrBDJIV1HQVUf2X1+myIaewrnJqVlLnE8RTs=

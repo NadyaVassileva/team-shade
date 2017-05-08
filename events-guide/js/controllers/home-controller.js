@@ -6,8 +6,9 @@ const $container = $('#container');
 
 export function get(params) {
 
-    if(sessionStorage.length===0){
-        window.location.hash = '#/login'; 
+    if (sessionStorage.length === 0) {
+
+        $("#login-button").trigger("click");
         return;
     }
     //if public

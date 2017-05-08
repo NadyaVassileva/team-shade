@@ -22,13 +22,16 @@ export function loadFavoriteEvents(context) {
     eventData.findAllEvents()
         .then(response => {
             let currentUser = sessionStorage.getItem('currentUser');
-            let commaDelimitedSearchString = currentUser + ',';
+            // let commaDelimitedSearchString = currentUser + ',';
 
             let favoriteEvents = response.filter(event => {
-                if (event.favorites !== null &&
-                    event.favorites.indexOf(commaDelimitedSearchString) > -1) {
+                if (event.favorites !== null /*&&
+                    event.favorites.indexOf(commaDelimitedSearchString) > -1 */) {
+                    let favoredByUser = event.favorites.split(/[ ,]+/);
 
-                    return true;
+                    if (favoredByUser.indexOf(currentUser) > -1) {
+                        return true;
+                    }
                 }
                 else {
                     return false;

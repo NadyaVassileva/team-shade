@@ -131,7 +131,7 @@ function addListenersToButtons(events) {
             //trqbva ni promise
 
             $this
-                .toggleClass('btn-default')
+                .toggleClass('btn-primary')
                 .toggleClass('btn-danger')
                 .attr('data-actiontype', 'remove')
                 .text("Remove from favorites");
@@ -142,7 +142,7 @@ function addListenersToButtons(events) {
             //trqbva ni promise
 
             $this
-                .toggleClass('btn-default')
+                .toggleClass('btn-primary')
                 .toggleClass('btn-danger')
                 .attr('data-actiontype', 'add')
                 .text("Add to favorites");

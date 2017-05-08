@@ -13,8 +13,49 @@ class EventController {
 }
 
 
-export function loadFavoriteEvents(context){
-    loadAllEvents(context);
+export function loadFavoriteEvents(context) {
+    // loadAllEvents(context); WORKING
+
+    //TODO if sessionStorage is empty
+    //redirect to Login!
+
+    eventData.findAllEvents()
+        .then(response => {
+            let currentUser = sessionStorage.getItem('currentUser');
+            let commaDelimitedSearchString = currentUser + ',';
+
+            let favoriteEvents = response.filter(event => {
+                if (event.favorites !== null &&
+                    event.favorites.indexOf(commaDelimitedSearchString) > -1) {
+
+                    return true;
+                }
+                else {
+                    return false;
+                }
+
+            });
+            console.log(favoriteEvents);
+
+            //TEMPLATE
+            templateLoader.generate('events')
+                .then(template => {
+                    let events = favoriteEvents;
+
+                    context.$element().html(template({ events }));
+                    $('#events-table').click((event) => {
+                        console.log(event.target);
+                    });
+
+
+                }, error => {
+                    console.log(error);
+                });
+
+
+        }, error => {
+            console.log(error);
+        });
 }
 
 export function loadAllEvents(context) {

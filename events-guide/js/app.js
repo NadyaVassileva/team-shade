@@ -53,7 +53,7 @@ var sammyApp = Sammy('#container', function () {
         $('#login-button').removeClass('hidden');
 
         sessionStorage.clear();
-        window.location.hash="#/home";
+        window.location.hash="#/";
 
         //need to redirect to home
         console.log("User is logged out!!!");

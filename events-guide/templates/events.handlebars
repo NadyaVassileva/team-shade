@@ -11,16 +11,16 @@
             <h4>When: {{this.date}}</h4>
         </div>
         <a class="bookmark">
-            <a class="save-action" href="#">
+            {{!--<a class="save-action" href="#">--}}
                 <button id="{{this._id}}" type="button" class="btn-primary saveButton">
-                            <span>Add to favorites</span>
+                            Add to favorites
                 </button>
+            {{!--</a>--}}
         </a>
-       <hr/>
-       {{this._id}}
-       <hr/>
-       
+        <hr/> {{this._id}}
+        <hr/>
+
+
     </div>
     {{/each}}
 </div>
-

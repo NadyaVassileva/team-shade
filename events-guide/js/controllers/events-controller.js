@@ -32,11 +32,18 @@ export function loadEventsByCategory(context, filter) {
                     let events = response;
 
                     context.$element().html(template({ events }));
-
-                    //Works
-                    context.$element().on('click', function (event) {
-                        alert("hi");
+                    $('#events-table').click((event)=>{
+                        console.log(event.target);
                     });
+                    // console.log(context);
+                    //Works
+                    // context.$element().on('click', function (event) {
+                    //     // console.log($);
+                    //     let $this = $(event.target);
+                    //     if($this.hasClass("btn-primary saveButton")){
+                    //      console.log($this.attr('id'));   
+                    //     }
+                    // });
 
 
                 }, error => {

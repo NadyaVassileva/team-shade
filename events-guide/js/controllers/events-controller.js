@@ -1,6 +1,6 @@
 import * as data from 'data';
-import { generate } from 'templateLoader';
-import { findEvents, findEventsByCategory } from 'eventsData';
+import * as templateLoader from 'templateLoader';
+import * as eventData from 'eventsData';
 import { kinveyFindEvents, kinveyFindEventsByCategory } from 'data';
 
 
@@ -21,13 +21,14 @@ export function loadEvents(context) {
                     context.$element().html(template({ events }));
                 }, error => {
                     console.log(error);
-                })
+                });
         });
 }
+
 export function loadEventsByCategory(context, filter) {
-    findEventsByCategory(filter)
+    eventData.findEventsByCategory(filter)
         .then(response => {
-            generate('events')
+            templateLoader.generate('events')
                 .then(template => {
                     let events = response;
 
@@ -35,20 +36,11 @@ export function loadEventsByCategory(context, filter) {
                     $('#events-table').click((event)=>{
                         console.log(event.target);
                     });
-                    // console.log(context);
-                    //Works
-                    // context.$element().on('click', function (event) {
-                    //     // console.log($);
-                    //     let $this = $(event.target);
-                    //     if($this.hasClass("btn-primary saveButton")){
-                    //      console.log($this.attr('id'));   
-                    //     }
-                    // });
 
 
                 }, error => {
                     console.log(error);
-                })
+                });
         });
 }
 

@@ -27,22 +27,18 @@ var sammyApp = Sammy('#container', function () {
   });
 
   this.get('#/cinema', function (context) {
-    //loadEvents(context);
     loadEventsByCategory(context, 'cinema');
   });
 
   this.get('#/sport', function (context) {
-    //loadEvents(context);
     loadEventsByCategory(context, 'sport');
   });
 
   this.get('#/theater', function (context) {
-    //loadEvents(context);
     loadEventsByCategory(context, 'theater');
   });
 
   this.get('#/music', function (context) {
-    //loadEvents(context);
     loadEventsByCategory(context, 'music');
   });
 

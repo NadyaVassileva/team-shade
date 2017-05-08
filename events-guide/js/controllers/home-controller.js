@@ -1,6 +1,7 @@
 import * as data from 'data';
 import * as templateLoader from 'templateLoader';
 import * as eventData from 'eventsData';
+import * as eventController from 'eventsController';
 
 
 const $container = $('#container');
@@ -13,38 +14,5 @@ export function get(context) {
         return;
     }
 
-
-    eventData.findAllEvents()
-        .then(response => {
-            templateLoader.generate('events')
-                .then(template => {
-                    let events = response;
-
-                    context.$element().html(template({ events }));
-                    $('#events-table').click((event) => {
-                        console.log(event.target);
-                    });
-
-
-                }, error => {
-                    console.log(error);
-                });
-        });
-
-    //if public
-    // template.load('home')
-    //         .then(templateHTML => {
-    //             $container.html(templateHTML);
-    //         });
-
-    //user-specific -> 
-
-    // Promise.all([
-    //     template.generate("home")
-    //     /*,data.getPublicEvents() to be added*/
-    // ])
-    //     .then(([templateFunction/*, events*/]) => {
-    //         $container.html(templateFunction());
-
-    //     });
+    eventController.loadAllEvents(context);
 }

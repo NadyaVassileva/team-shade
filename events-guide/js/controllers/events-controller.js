@@ -12,13 +12,19 @@ class EventController {
     }
 }
 
-export function loadEvents(context) {
-    findEvents()
+export function loadAllEvents(context) {
+    eventData.findAllEvents()
         .then(response => {
-            generate('events')
+            templateLoader.generate('events')
                 .then(template => {
                     let events = response;
+
                     context.$element().html(template({ events }));
+                    $('#events-table').click((event) => {
+                        console.log(event.target);
+                    });
+
+
                 }, error => {
                     console.log(error);
                 });
@@ -33,7 +39,7 @@ export function loadEventsByCategory(context, filter) {
                     let events = response;
 
                     context.$element().html(template({ events }));
-                    $('#events-table').click((event)=>{
+                    $('#events-table').click((event) => {
                         console.log(event.target);
                     });
 

@@ -45,32 +45,3 @@ export function loadEventsByCategory(context, filter) {
 }
 
 
-
-
-// to ask if it's acceptable for the project
-export function kinveyLoadEvents(context) {
-    data.app.kinveyFindEvents()
-        .subscribe(function (events) {
-            generate('events')
-                .then(template => {
-                    console.log(events);
-                    context.$element().html(template({ events }));
-                }, error => {
-                    console.log(error);
-                })
-        });
-}
-
-export function kinveyLoadEventsByCategory(context, categoryType) {
-    data.app.kinveyFindEventsByCategory(categoryType)
-        .subscribe(function (events) {
-            generate('events')
-                .then(template => {
-                    console.log(events);
-                    context.$element().html(template({ events }));
-                }, error => {
-                    console.log(error);
-                })
-        });
-}
-

@@ -42,7 +42,11 @@ var sammyApp = Sammy('#container', function () {
     loadEventsByCategory(context, 'music');
   });
 
-  this.notFound
+  this.get('#favorites', function(context){
+
+  });
+
+  // this.notFound TO BE IMPLMENTED
 
   // to ask if it's acceptable for the project
   // this.get('#/sport', function (context) {

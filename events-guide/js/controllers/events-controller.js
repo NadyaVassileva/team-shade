@@ -22,11 +22,9 @@ export function loadFavoriteEvents(context) {
     eventData.findAllEvents()
         .then(response => {
             let currentUser = sessionStorage.getItem('currentUser');
-            // let commaDelimitedSearchString = currentUser + ',';
 
             let favoriteEvents = response.filter(event => {
-                if (event.favorites !== null /*&&
-                    event.favorites.indexOf(commaDelimitedSearchString) > -1 */) {
+                if (event.favorites) {
                     let favoredByUser = event.favorites.split(/[ ,]+/);
 
                     if (favoredByUser.indexOf(currentUser) > -1) {
@@ -40,20 +38,30 @@ export function loadFavoriteEvents(context) {
             });
             console.log(favoriteEvents);
 
-            //TEMPLATE
-            templateLoader.generate('events')
-                .then(template => {
-                    let events = favoriteEvents;
+            if (favoriteEvents.length > 0) {
+                templateLoader.generate('events')
+                    .then(template => {
+                        let events = favoriteEvents;
 
-                    context.$element().html(template({ events }));
-                    $('#events-table').click((event) => {
-                        console.log(event.target);
+                        context.$element().html(template({ events }));
+                        $('#events-table').click((event) => {
+                            console.log(event.target);
+                        });
+
+
+                    }, error => {
+                        console.log(error);
                     });
+            }
+            else {
+                templateLoader.generate('nofavorites')
+                    .then(template => {
+                        context.$element().html(template({ user: currentUser }));
+                    }, error => {
+                        console.log(error);
+                    });
+            }
 
-
-                }, error => {
-                    console.log(error);
-                });
 
 
         }, error => {

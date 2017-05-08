@@ -6,7 +6,7 @@ import { kinveyFindEvents, kinveyFindEventsByCategory } from 'data';
 
 // to be updated
 class EventController {
-    constructor(eventsData, templates){
+    constructor(eventsData, templates) {
         this.eventsData = eventsData;
         this.temlpates = templates;
     }
@@ -14,30 +14,35 @@ class EventController {
 
 export function loadEvents(context) {
     findEvents()
-    .then(response => {
-        generate('events')
-        .then( template => {
-            let events = response;
-            context.$element().html(template({events}));
-        }, error => {
-            console.log(error);
-            })
-        });        
+        .then(response => {
+            generate('events')
+                .then(template => {
+                    let events = response;
+                    context.$element().html(template({ events }));
+                }, error => {
+                    console.log(error);
+                })
+        });
 }
 export function loadEventsByCategory(context, filter) {
     findEventsByCategory(filter)
-    .then(response => {
-        generate('events')
-        .then( template => {
-            let events = response;
-            context.$element().html(template({events}));
-            
-            
+        .then(response => {
+            generate('events')
+                .then(template => {
+                    let events = response;
 
-        }, error => {
-            console.log(error);
-            })
-        });        
+                    context.$element().html(template({ events }));
+
+                    //Works
+                    context.$element().on('click', function (event) {
+                        alert("hi");
+                    });
+
+
+                }, error => {
+                    console.log(error);
+                })
+        });
 }
 
 
@@ -45,28 +50,28 @@ export function loadEventsByCategory(context, filter) {
 
 // to ask if it's acceptable for the project
 export function kinveyLoadEvents(context) {
-   data.app.kinveyFindEvents()
-   .subscribe(function(events) {
-    generate('events')
-        .then( template => {
-            console.log(events);
-            context.$element().html(template({events}));
-        }, error => {
-            console.log(error);
-        })
-});
+    data.app.kinveyFindEvents()
+        .subscribe(function (events) {
+            generate('events')
+                .then(template => {
+                    console.log(events);
+                    context.$element().html(template({ events }));
+                }, error => {
+                    console.log(error);
+                })
+        });
 }
 
 export function kinveyLoadEventsByCategory(context, categoryType) {
-   data.app.kinveyFindEventsByCategory(categoryType)
-   .subscribe(function(events) {
-    generate('events')
-        .then( template => {
-            console.log(events);
-            context.$element().html(template({events}));
-        }, error => {
-            console.log(error);
-        })
-});
+    data.app.kinveyFindEventsByCategory(categoryType)
+        .subscribe(function (events) {
+            generate('events')
+                .then(template => {
+                    console.log(events);
+                    context.$element().html(template({ events }));
+                }, error => {
+                    console.log(error);
+                })
+        });
 }
 

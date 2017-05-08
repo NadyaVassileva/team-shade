@@ -2,11 +2,10 @@ import 'jquery';
 import Sammy from 'sammy';
 import * as template from 'templateLoader';
 import * as homeController from 'homeController';
-import { userLogin } from 'userController';
-import { userLogout } from 'userController';
+import { userLogin, userLogout } from 'userController';
 
-import { loadEvents } from 'eventsController';
-import { loadEventsByCategory } from 'eventsController';
+import { loadEvents, loadEventsByCategory } from 'eventsController';
+import { kinveyLoadEventsByCategory } from 'eventsController';
 
 import { app } from 'data';
 
@@ -18,12 +17,6 @@ var sammyApp = Sammy('#container', function () {
 
   //need to refactor to controllers
   this.get('#/home', homeController.get);
-
-  // this load all events
-  // this.get('#/home', function (context) {
-  //     loadEvents(context);
-  // });
-
 
   // this.route('#/login', function () {
   //   template.load('login')
@@ -37,16 +30,18 @@ var sammyApp = Sammy('#container', function () {
   });
 
   this.get('#/cinema', function (context) {
-      loadEventsByCategory(context, 'cinema');
+    loadEvents(context);
+    //loadEventsByCategory(context, 'cinema');
   });
 
-  this.get('#/sport', function (context) {
-      loadEventsByCategory(context, 'sport');
-  });
+  // to ask if it's acceptable for the project
+  // this.get('#/sport', function (context) {
+  //     kinveyLoadEventsByCategory(context, 'sport');
+  // });
 
-  this.get('#/music', function (context) {
-      loadEventsByCategory(context, 'music');
-  });
+  // this.get('#/music', function (context) {
+  //     kinveyLoadEventsByCategory(context, 'music');
+  // });
 
   $('#logout-button').on('click', function(event) {
       event.preventDefault();

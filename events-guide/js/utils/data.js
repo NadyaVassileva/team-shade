@@ -11,7 +11,7 @@ var app = {
     '#login-with-mic click': 'loginWithMIC',
 
     // Logout
-    '#login-button click': 'logout',
+    '#logout-button click': 'logout',
   },
 
   login: function(event, username, password) {
@@ -22,7 +22,12 @@ var app = {
 
     // Login to Kinvey
     Kinvey.User.login(username, password)
-      .then(function() {
+      .then(function(response) {
+
+        var authToken = response.data._kmd.authtoken;
+        sessionStorage.setItem('authToken', authToken);
+        //console.log(sessionStorage.getItem('authToken'));
+
         location.replace('#/home');
         console.log("User is logged!!!");
         $('#logout-button').removeClass('hidden');
@@ -35,7 +40,7 @@ var app = {
       });
     },
     
-    findEvents: function() {
+    kinveyFindEvents: function() {
     // return all event from the base        
     var allData = Kinvey.DataStore.collection('events');
 
@@ -43,7 +48,7 @@ var app = {
 
     },
 
-    findEventsByCategory: function(category) {
+    kinveyFindEventsByCategory: function(category) {
     // return all event from the base        
     var allData = Kinvey.DataStore.collection('events');
     var query = new Kinvey.Query();

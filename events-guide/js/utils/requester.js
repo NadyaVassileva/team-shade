@@ -13,10 +13,9 @@ function request(url, type, options, headers) {
     return promise;
 }
 
-export function get(url) {
-    return request(url, 'GET', {}, {});
+export function get(url, headers) {
+    return request(url, 'GET', {}, headers);
 }
-
 
 export function post(url) {
     return request(url, 'POST', {}, {});

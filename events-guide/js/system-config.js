@@ -16,6 +16,8 @@ SystemJS.config({
         'templateLoader': '/js/utils/template-loader.js',
         'requester' : '/js/utils/requester.js',
         'data': 'js/utils/data.js',
+        'constants': 'js/utils/constants.js',
+        'eventsData': 'js/utils/events-data.js',
 
         //Controllers
         'homeController':'/js/controllers/home-controller.js',

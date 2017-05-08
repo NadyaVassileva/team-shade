@@ -53,8 +53,9 @@ var sammyApp = Sammy('#container', function () {
         $('#login-button').removeClass('hidden');
 
         sessionStorage.clear();
+        window.location.hash="#/home";
 
-
+        //need to redirect to home
         console.log("User is logged out!!!");
       });
   });

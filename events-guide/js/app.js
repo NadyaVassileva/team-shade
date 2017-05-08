@@ -55,8 +55,7 @@ var sammyApp = Sammy('#container', function () {
         $('#logout-button').addClass('hidden');
         $('#login-button').removeClass('hidden');
 
-        // clear sessionStorage to be added
-        // ...
+        sessionStorage.clear();
 
 
         console.log("User is logged out!!!");

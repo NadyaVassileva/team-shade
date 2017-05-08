@@ -70,6 +70,10 @@ var sammyApp = Sammy('#container', function () {
       });
   });
 
+  $('#container').on('click', function (event) {
+    alert("hi");
+  });
+
 });
 
 sammyApp.run('#/');

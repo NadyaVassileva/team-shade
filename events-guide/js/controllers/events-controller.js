@@ -31,6 +31,9 @@ export function loadEventsByCategory(context, filter) {
         .then( template => {
             let events = response;
             context.$element().html(template({events}));
+            
+            
+
         }, error => {
             console.log(error);
             })

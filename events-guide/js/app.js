@@ -9,6 +9,10 @@ import { kinveyLoadEventsByCategory } from 'eventsController';
 
 import { app } from 'data';
 
+import * as eventHandlers from 'eventHandlers';
+
+eventHandlers.loadAll();
+
 var sammyApp = Sammy('#container', function () {
   let $container = $('#container');
   this.get('#/', function () {
@@ -26,7 +30,7 @@ var sammyApp = Sammy('#container', function () {
   // });
 
   this.get('#/login', function (context) {
-      userLogin(context);
+    userLogin(context);
   });
 
   this.get('#/cinema', function (context) {
@@ -48,9 +52,9 @@ var sammyApp = Sammy('#container', function () {
   //     kinveyLoadEventsByCategory(context, 'music');
   // });
 
-  $('#logout-button').on('click', function(event) {
-      event.preventDefault();
-      Kinvey.User.logout()
+  $('#logout-button').on('click', function (event) {
+    event.preventDefault();
+    Kinvey.User.logout()
       .then(response => {
         $('#logout-button').addClass('hidden');
         $('#login-button').removeClass('hidden');
@@ -59,7 +63,7 @@ var sammyApp = Sammy('#container', function () {
 
 
         console.log("User is logged out!!!");
-    });
+      });
   });
 
 });

@@ -44,7 +44,7 @@ export function loadFavoriteEvents(context) {
                         let events = favoriteEvents;
 
                         context.$element().html(template({ events }));
-                        addListenersToButtons();
+                        addListenersToButtons(events);
 
 
                     }, error => {
@@ -75,7 +75,7 @@ export function loadAllEvents(context) {
                     let events = response;
 
                     context.$element().html(template({ events }));
-                    addListenersToButtons();
+                    addListenersToButtons(events);
 
 
                 }, error => {
@@ -93,7 +93,7 @@ export function loadEventsByCategory(context, filter) {
 
                     context.$element().html(template({ events }));
 
-                    addListenersToButtons();
+                    addListenersToButtons(events);
 
                 }, error => {
                     console.log(error);
@@ -101,9 +101,38 @@ export function loadEventsByCategory(context, filter) {
         });
 }
 
-function addListenersToButtons() {
-    $('.saveButton').click((event) => {
-        console.log(event.target);
+function addListenersToButtons(events) {
+    $('.saveButton').click((ev) => {
+        let $this = $(ev.target);
+
+        //kogato e gotovo THEN
+        if ($this.attr('data-actiontype') === "add") {
+
+            //trqbva ni promise
+
+            $this
+                .toggleClass('btn-default')
+                .toggleClass('btn-danger')
+                .attr('data-actiontype', 'remove')
+                .text("Remove from favorites");
+
+        }
+        else {
+
+            //trqbva ni promise
+            
+            $this
+                .toggleClass('btn-default')
+                .toggleClass('btn-danger')
+                .attr('data-actiontype', 'add')
+                .text("Add to favorites");
+        }
+
+        // .btn-danger
+        console.log(ev.target);
+        console.log(events);
+
+
     });
 }
 

@@ -1,24 +1,22 @@
 <div id="events-table" class="container">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Category</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Place</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#each events}}
-            <tr>
-                <td>{{this.category}}</td>
-                <td>{{this.name}}</td>
-                {{#if this.description}}
-                    <td>{{this.description}}</td>
-                {{/if}}
-                <td>{{this.place }}</td>
-            </tr>
-            {{/each}}
-        </tbody>
-    </table>
+    {{#each events}}
+    <div class="event-container">
+        <img src="{{this.image}}" class="small" alt="some image">
+        <div class="event-characteristics">
+            <h4 class="event-presentation-name">{{this.name}}</h4>
+            {{#if this.description}}
+            <h4 class="event-presentation-description">{{this.description}}</h4>
+            {{/if}}
+            <h4 class="event-presentation-location">Location: <span>{{this.location}}</span></h4>
+            <h4>When: {{this.date}}</h4>
+        </div>
+        <a class="bookmark">
+            <a class="save-action" href="#">
+                <button type="button" class="btn-primary saveButton">
+                            <span>Add to favorites</span>
+                </button>
+        </a>
+    </div>
+    {{/each}}
 </div>
+

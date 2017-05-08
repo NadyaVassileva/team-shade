@@ -1,4 +1,4 @@
-//var Kinvey = require('kinvey-html5-sdk');
+import { constants } from 'constants';
 
 var app = {
 
@@ -8,7 +8,6 @@ var app = {
 
     // Login
     '#login-form submit': 'login',
-    '#login-with-mic click': 'loginWithMIC',
 
     // Logout
     '#logout-button click': 'logout',
@@ -25,10 +24,10 @@ var app = {
       .then(function(response) {
 
         //console.log(response);
-        var authToken = response.data._kmd.authtoken;
+        let authToken = response.data._kmd.authtoken;
         sessionStorage.setItem('authToken', authToken);
 
-        var currentUser = response.data.username;
+        let currentUser = response.data.username;
         sessionStorage.setItem('currentUser', currentUser);
 
         location.replace('#/home');
@@ -41,6 +40,32 @@ var app = {
       .catch(function(error) {
         $('#login-error').html('<p>' + error.message + '</p>').show(0);
       });
+    },
+
+    signup: function(event, userInfo) {
+      // Prevent the form from being submitted
+      event.preventDefault();
+
+      $('#signup-error').hide(0);
+
+      Kinvey.User.signup(userInfo)
+        .then(function(response) {
+        //console.log(response);
+        let authToken = response.data._kmd.authtoken;
+        sessionStorage.setItem('authToken', authToken);
+
+        let currentUser = response.data.username;
+        sessionStorage.setItem('currentUser', currentUser);
+
+        location.replace('#/home');
+        console.log("User is logged!!!");
+        $('#logout-button').removeClass('hidden');
+        $('#login-button').addClass('hidden');
+    })
+    
+        .catch(function(error) {
+          $('#signup-error').html('<p>' + error.message + '</p>').show(0);
+        });
     },
     
     kinveyFindEvents: function() {
@@ -67,6 +92,7 @@ var app = {
 function bindEvents() {
   return new Promise(function(resolve) {
     var elementEventKeys = Object.keys(app.events);
+
     elementEventKeys.forEach(function(elementEventKey) {
       var element = elementEventKey.split(' ')[0];
       var event = elementEventKey.split(' ')[1];
@@ -78,8 +104,8 @@ function bindEvents() {
 
 // Initialize Kinvey
 Kinvey.initialize({
-  appKey: 'kid_HyCEcB5k-',
-  appSecret: 'a9a7f4cb0a984e7880268561903a1360'
+  appKey: constants.DATA_KEY,
+  appSecret: constants.DATA_SECRET
 })
   .then(function(activeUser) {
     if (!activeUser) {

@@ -15,19 +15,12 @@ eventHandlers.loadAll();
 
 var sammyApp = Sammy('#container', function () {
   let $container = $('#container');
+
   this.get('#/', function () {
     this.redirect('#/home');
   });
 
-  //need to refactor to controllers
   this.get('#/home', homeController.get);
-
-  // this.route('#/login', function () {
-  //   template.load('login')
-  //     .then(function (templateHtml) {
-  //       $container.html(templateHtml);
-  //     });
-  // });
 
   this.get('#/login', function (context) {
     userLogin(context);

@@ -6,6 +6,10 @@ const $container = $('#container');
 
 export function get(params) {
 
+    if(sessionStorage.length===0){
+        window.location.hash = '#/login'; 
+        return;
+    }
     //if public
     template.load('home')
         .then(templateHTML => {

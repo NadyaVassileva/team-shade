@@ -6,14 +6,13 @@ import * as requester from 'requester';
 export function findEvents() {
     let headers = { 'Authorization': "Kinvey " + sessionStorage.getItem('authToken') };
     let url = constants.MAIN_URL;
-    console.log(requester.get(url, headers));
 
     return requester.get(url, headers);
 }
 
 export function findEventsByCategory(filter) {
     let headers = { 'Authorization': "Kinvey " + sessionStorage.getItem('authToken') };
-    let url = constants.MAIN_URL;
+    let url = `${constants.MAIN_URL}?query={"category":"${filter}"}`;
     return requester.get(url, headers);
 
             // response.filter(obj => Object.keys(obj)
@@ -22,3 +21,9 @@ export function findEventsByCategory(filter) {
         //}
 }
 
+export function findEventsByLocation(filter) {
+    let headers = { 'Authorization': "Kinvey " + sessionStorage.getItem('authToken') };
+    let url = `${constants.MAIN_URL}?query={"location":"${filter}"}`;
+    return requester.get(url, headers);
+
+}

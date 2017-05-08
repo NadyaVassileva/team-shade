@@ -30,8 +30,8 @@ var sammyApp = Sammy('#container', function () {
   });
 
   this.get('#/cinema', function (context) {
-    loadEvents(context);
-    //loadEventsByCategory(context, 'cinema');
+    //loadEvents(context);
+    loadEventsByCategory(context, 'cinema');
   });
 
   // to ask if it's acceptable for the project

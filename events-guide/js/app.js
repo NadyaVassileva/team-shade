@@ -2,7 +2,7 @@ import 'jquery';
 import Sammy from 'sammy';
 import * as template from 'templateLoader';
 import * as homeController from 'homeController';
-import { userLogin, userLogout } from 'userController';
+import { userLogin, userLogout, userRegister } from 'userController';
 
 import { loadEvents, loadEventsByCategory } from 'eventsController';
 import { kinveyLoadEventsByCategory } from 'eventsController';
@@ -24,6 +24,10 @@ var sammyApp = Sammy('#container', function () {
 
   this.get('#/login', function (context) {
     userLogin(context);
+  });
+
+  this.get('#/register', function (context) {
+    userRegister(context);
   });
 
   this.get('#/cinema', function (context) {

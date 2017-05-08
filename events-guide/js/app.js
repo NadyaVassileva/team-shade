@@ -34,6 +34,11 @@ var sammyApp = Sammy('#container', function () {
     loadEventsByCategory(context, 'cinema');
   });
 
+  this.get('#/sport', function (context) {
+    //loadEvents(context);
+    loadEventsByCategory(context, 'sport');
+  });
+
   // to ask if it's acceptable for the project
   // this.get('#/sport', function (context) {
   //     kinveyLoadEventsByCategory(context, 'sport');
@@ -49,6 +54,11 @@ var sammyApp = Sammy('#container', function () {
       .then(response => {
         $('#logout-button').addClass('hidden');
         $('#login-button').removeClass('hidden');
+
+        // clear sessionStorage to be added
+        // ...
+
+
         console.log("User is logged out!!!");
     });
   });

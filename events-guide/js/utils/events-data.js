@@ -8,6 +8,11 @@ export function findEvents() {
     let url = constants.MAIN_URL;
 
     return requester.get(url, headers);
+                // response.filter(obj => Object.keys(obj)
+            //     .some(key => obj[key]
+            //      .includes(filter)))
+        //}
+
 }
 
 export function findEventsByCategory(filter) {
@@ -15,10 +20,6 @@ export function findEventsByCategory(filter) {
     let url = `${constants.MAIN_URL}?query={"category":"${filter}"}`;
     return requester.get(url, headers);
 
-            // response.filter(obj => Object.keys(obj)
-            //     .some(key => obj[key]
-            //      .includes(filter)))
-        //}
 }
 
 export function findEventsByLocation(filter) {

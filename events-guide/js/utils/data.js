@@ -24,9 +24,12 @@ var app = {
     Kinvey.User.login(username, password)
       .then(function(response) {
 
+        //console.log(response);
         var authToken = response.data._kmd.authtoken;
         sessionStorage.setItem('authToken', authToken);
-        //console.log(sessionStorage.getItem('authToken'));
+
+        var currentUser = response.data.username;
+        sessionStorage.setItem('currentUser', currentUser);
 
         location.replace('#/home');
         console.log("User is logged!!!");

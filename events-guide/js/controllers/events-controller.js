@@ -13,6 +13,8 @@ class EventController {
 }
 
 
+
+
 export function loadFavoriteEvents(context) {
     // loadAllEvents(context); WORKING
 
@@ -21,22 +23,9 @@ export function loadFavoriteEvents(context) {
 
     eventData.findAllEvents()
         .then(response => {
-            let currentUser = sessionStorage.getItem('currentUser');
 
-            let favoriteEvents = response.filter(event => {
-                if (event.favorites) {
-                    let favoredByUser = event.favorites.split(/[ ,]+/);
-
-                    if (favoredByUser.indexOf(currentUser) > -1) {
-                        return true;
-                    }
-                }
-                else {
-                    return false;
-                }
-
-            });
-            console.log(favoriteEvents);
+            let events = addResponseMetaData(response);
+            let favoriteEvents = events.filter(event => event.favoritedByCurrentUser);
 
             if (favoriteEvents.length > 0) {
                 templateLoader.generate('events')
@@ -72,7 +61,8 @@ export function loadAllEvents(context) {
         .then(response => {
             templateLoader.generate('events')
                 .then(template => {
-                    let events = response;
+                    let events = addResponseMetaData(response);
+                    console.log(events);
 
                     context.$element().html(template({ events }));
                     addListenersToButtons(events);
@@ -84,12 +74,41 @@ export function loadAllEvents(context) {
         });
 }
 
+
+function addResponseMetaData(response) {
+    let events = response;
+    let currentUser = sessionStorage.getItem('currentUser');
+    //favorited by currentUSer
+    events.forEach(event => {
+
+        event.favoritesCount = 0;
+        event.favoritedByCurrentUser = false;
+
+        if (event.favorites) {
+            let users = event.favorites.split(/[ ,]+/);
+            //FIRST PROPERTY
+            event.favoritesCount = users.length;
+            //SECOND PROPERTY
+            if (users.indexOf(currentUser) > -1) {
+                event.favoritedByCurrentUser = true;
+            }
+
+        }
+    });
+
+    return events;
+
+}
+
 export function loadEventsByCategory(context, filter) {
     eventData.findEventsByCategory(filter)
         .then(response => {
             templateLoader.generate('events')
                 .then(template => {
-                    let events = response;
+                    // let events = response;
+                    //REFACTORED !!!
+                    let events = addResponseMetaData(response);
+                    console.log(events);
 
                     context.$element().html(template({ events }));
 
@@ -120,7 +139,7 @@ function addListenersToButtons(events) {
         else {
 
             //trqbva ni promise
-            
+
             $this
                 .toggleClass('btn-default')
                 .toggleClass('btn-danger')

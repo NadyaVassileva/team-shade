@@ -11,17 +11,19 @@
             <h4>When: {{this.date}}</h4>
         </div>
         <a class="bookmark">
-            {{!--<a class="save-action" href="#">--}}
                 <button id="{{this._id}}" type="button" data-actiontype="add" class="btn-primary saveButton">
                             Add to favorites
                 </button>
-            {{!--</a>--}}
+
         </a>
         <hr/> 
         {{this._id}}
         <hr/>
-        {{this.favorites}}
+        Current User Liked: {{this.favoritedByCurrentUser}}
         <hr/>
+        Favored by: {{this.favoritesCount}}
+        <hr/>
+        
         
 
 

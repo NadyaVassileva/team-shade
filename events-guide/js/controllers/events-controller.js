@@ -44,9 +44,7 @@ export function loadFavoriteEvents(context) {
                         let events = favoriteEvents;
 
                         context.$element().html(template({ events }));
-                        $('#events-table').click((event) => {
-                            console.log(event.target);
-                        });
+                        addListenersToButtons();
 
 
                     }, error => {
@@ -77,9 +75,7 @@ export function loadAllEvents(context) {
                     let events = response;
 
                     context.$element().html(template({ events }));
-                    $('#events-table').click((event) => {
-                        console.log(event.target);
-                    });
+                    addListenersToButtons();
 
 
                 }, error => {
@@ -96,15 +92,19 @@ export function loadEventsByCategory(context, filter) {
                     let events = response;
 
                     context.$element().html(template({ events }));
-                    $('#events-table').click((event) => {
-                        console.log(event.target);
-                    });
 
+                    addListenersToButtons();
 
                 }, error => {
                     console.log(error);
                 });
         });
+}
+
+function addListenersToButtons() {
+    $('.saveButton').click((event) => {
+        console.log(event.target);
+    });
 }
 
 

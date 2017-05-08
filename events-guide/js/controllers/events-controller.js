@@ -12,6 +12,11 @@ class EventController {
     }
 }
 
+
+export function loadFavoriteEvents(context){
+    loadAllEvents(context);
+}
+
 export function loadAllEvents(context) {
     eventData.findAllEvents()
         .then(response => {

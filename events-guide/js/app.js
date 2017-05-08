@@ -43,7 +43,7 @@ var sammyApp = Sammy('#container', function () {
   });
 
   this.get('#/favorites', function (context) {
-    eventsController.loadAllEvents(context);
+    eventsController.loadFavoriteEvents(context);
   });
 
   // this.notFound TO BE IMPLMENTED

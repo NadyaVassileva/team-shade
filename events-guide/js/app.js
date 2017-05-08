@@ -36,6 +36,16 @@ var sammyApp = Sammy('#container', function () {
     loadEventsByCategory(context, 'sport');
   });
 
+  this.get('#/theater', function (context) {
+    //loadEvents(context);
+    loadEventsByCategory(context, 'theater');
+  });
+
+  this.get('#/music', function (context) {
+    //loadEvents(context);
+    loadEventsByCategory(context, 'music');
+  });
+
   // to ask if it's acceptable for the project
   // this.get('#/sport', function (context) {
   //     kinveyLoadEventsByCategory(context, 'sport');
@@ -53,7 +63,7 @@ var sammyApp = Sammy('#container', function () {
         $('#login-button').removeClass('hidden');
 
         sessionStorage.clear();
-        window.location.hash="#/login";
+        window.location.hash = "#/login";
 
         //need to redirect to home
         console.log("User is logged out!!!");

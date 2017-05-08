@@ -26,6 +26,7 @@ export function loadFavoriteEvents(context) {
 
             let events = addResponseMetaData(response);
             let favoriteEvents = events.filter(event => event.favoritedByCurrentUser);
+            let currentUser = sessionStorage.getItem('currentUser');
 
             if (favoriteEvents.length > 0) {
                 templateLoader.generate('events')

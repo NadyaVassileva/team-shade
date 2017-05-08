@@ -8,10 +8,10 @@ export function findEvents() {
     let url = constants.MAIN_URL;
 
     return requester.get(url, headers);
-                // response.filter(obj => Object.keys(obj)
-            //     .some(key => obj[key]
-            //      .includes(filter)))
-        //}
+    // response.filter(obj => Object.keys(obj)
+    //     .some(key => obj[key]
+    //      .includes(filter)))
+    //}
 
 }
 
@@ -27,6 +27,12 @@ export function findEventsByLocation(filter) {
     let url = `${constants.MAIN_URL}?query={"location":"${filter}"}`;
     return requester.get(url, headers);
 
+}
+
+export function findAllEvents() {
+    let headers = { 'Authorization': "Kinvey " + sessionStorage.getItem('authToken') };
+    let url = `${constants.MAIN_URL}`;
+    return requester.get(url, headers);
 }
 
 

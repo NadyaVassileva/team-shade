@@ -11,21 +11,20 @@
             <h4>When: {{this.date}}</h4>
         </div>
         <a class="bookmark">
-                <button id="{{this._id}}" type="button" data-actiontype="add" class="btn-primary saveButton">
-                            Add to favorites
+            {{#if this.favoritedByCurrentUser}}
+            <button id="{{this._id}}" type="button" data-actiontype="remove" class="btn-danger saveButton">
+                            Remove from favorites
                 </button>
-
+            {{else}}
+            <button id="{{this._id}}" type="button" data-actiontype="add" class="btn-primary saveButton">
+                            Add to favorites
+            </button>
+            {{/if}}
         </a>
-        <hr/> 
-        {{this._id}}
-        <hr/>
-        Current User Liked: {{this.favoritedByCurrentUser}}
-        <hr/>
-        Favored by: {{this.favoritesCount}}
-        <hr/>
-        
-        
 
+        <div> {{this._id}} </div>
+        <div>Added by {{this.favoritesCount}} users</div>
+        <hr/>
 
     </div>
     {{/each}}

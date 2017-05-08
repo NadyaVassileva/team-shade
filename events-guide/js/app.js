@@ -42,6 +42,8 @@ var sammyApp = Sammy('#container', function () {
     loadEventsByCategory(context, 'music');
   });
 
+  this.notFound
+
   // to ask if it's acceptable for the project
   // this.get('#/sport', function (context) {
   //     kinveyLoadEventsByCategory(context, 'sport');

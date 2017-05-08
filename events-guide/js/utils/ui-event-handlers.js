@@ -5,6 +5,11 @@ function bootStrapActiveChange() {
         $(".nav").find(".active").removeClass("active");
         $(this).parent().addClass("active");
     });
+
+    $('.navbar-brand').on("click", () => {
+        $(".nav").find(".active").removeClass("active");        
+        $('#home').parent().addClass("active");
+    });
 }
 
 function ensureLogOutLogInWithPageRefresh() {

@@ -4,7 +4,7 @@ import * as template from 'templateLoader';
 import * as homeController from 'homeController';
 import { userLogin, userLogout } from 'userController';
 
-import { loadEvents, loadEventsByCategory } from 'eventsController';
+import * as eventsController from 'eventsController';
 import { kinveyLoadEventsByCategory } from 'eventsController';
 
 import { app } from 'data';
@@ -27,35 +27,26 @@ var sammyApp = Sammy('#container', function () {
   });
 
   this.get('#/cinema', function (context) {
-    loadEventsByCategory(context, 'cinema');
+    eventsController.loadEventsByCategory(context, 'cinema');
   });
 
   this.get('#/sport', function (context) {
-    loadEventsByCategory(context, 'sport');
+    eventsController.loadEventsByCategory(context, 'sport');
   });
 
   this.get('#/theater', function (context) {
-    loadEventsByCategory(context, 'theater');
+    eventsController.loadEventsByCategory(context, 'theater');
   });
 
   this.get('#/music', function (context) {
-    loadEventsByCategory(context, 'music');
+    eventsController.loadEventsByCategory(context, 'music');
   });
 
-  this.get('#favorites', function(context){
-
+  this.get('#/favorites', function (context) {
+    eventsController.loadAllEvents(context);
   });
 
   // this.notFound TO BE IMPLMENTED
-
-  // to ask if it's acceptable for the project
-  // this.get('#/sport', function (context) {
-  //     kinveyLoadEventsByCategory(context, 'sport');
-  // });
-
-  // this.get('#/music', function (context) {
-  //     kinveyLoadEventsByCategory(context, 'music');
-  // });
 
   $('#logout-button').on('click', function (event) {
     event.preventDefault();

@@ -135,10 +135,15 @@ function addListenersToButtons(events) {
 
                 if ($this.attr('data-actiontype') === "add") {
 
-            
+
                     let updatedEvent = JSON.parse(JSON.stringify(getResponse));
 
-                    updatedEvent.favorites += `,${currentUser}`;
+                    if (updatedEvent.favorites) {
+                        updatedEvent.favorites += `,${currentUser}`;
+                    }
+                    else {
+                        updatedEvent.favorites = currentUser;
+                    }
 
                     //2. PUT 
                     eventData.updateEventById(itemID, updatedEvent)

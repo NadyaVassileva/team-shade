@@ -1,6 +1,6 @@
 <div id="events-table" class="container">
     {{#each events}}
-    <div class="event-container">
+    <div class="event-container" id="{{this._id}}">
         <img src="{{this.image}}" class="small" alt="some image">
         <div class="event-characteristics">
             <h4 class="event-presentation-name">{{this.name}}</h4>
@@ -12,11 +12,11 @@
         </div>
         <a class="bookmark">
             {{#if this.favoritedByCurrentUser}}
-            <button id="{{this._id}}" type="button" data-actiontype="remove" class="btn-danger saveButton">
+            <button id="{{this._id}}" type="button" data-id="{{this._id}}" data-actiontype="remove" class="btn-danger saveButton">
                             Remove from favorites
                 </button>
             {{else}}
-            <button id="{{this._id}}" type="button" data-actiontype="add" class="btn-primary saveButton">
+            <button type="button" data-id="{{this._id}}" data-actiontype="add" class="btn-primary saveButton">
                             Add to favorites
             </button>
             {{/if}}

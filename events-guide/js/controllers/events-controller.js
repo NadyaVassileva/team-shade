@@ -125,11 +125,11 @@ function addListenersToButtons(events) {
     $('.saveButton').click((ev) => {
         let $this = $(ev.target);
 
-        //kogato e gotovo THEN
+        
         if ($this.attr('data-actiontype') === "add") {
 
             //trqbva ni promise
-
+            //kogato e gotovo THEN
             $this
                 .toggleClass('btn-primary')
                 .toggleClass('btn-danger')
@@ -148,9 +148,8 @@ function addListenersToButtons(events) {
                 .text("Add to favorites");
         }
 
-        // .btn-danger
         console.log(ev.target);
-        console.log(events);
+        // console.log(events);
 
 
     });

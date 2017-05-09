@@ -164,14 +164,33 @@ function addListenersToButtons(events) {
                 }
                 else {
 
-                    //2. PUT ZAQVKA ZA MAHANE                    
-                    //trqbva ni promise
+                    let updatedEvent = JSON.parse(JSON.stringify(getResponse));
 
-                    $this
-                        .toggleClass('btn-primary')
-                        .toggleClass('btn-danger')
-                        .attr('data-actiontype', 'add')
-                        .text("Add to favorites");
+                    if (updatedEvent.favorites.indexOf(("," + currentUser)) > -1) {
+                        updatedEvent.favorites = updatedEvent.favorites.replace(("," + currentUser), "");
+
+                    }
+                    else {
+                        updatedEvent.favorites = updatedEvent.favorites.replace(currentUser, "");
+
+                    }
+
+                    //2. PUT 
+                    eventData.updateEventById(itemID, updatedEvent)
+                        .then(putResponse => {
+                            console.log("PUT RESPONSE");
+                            console.log(putResponse);
+                            //kogato e gotovo THEN
+
+                            $this
+                                .toggleClass('btn-primary')
+                                .toggleClass('btn-danger')
+                                .attr('data-actiontype', 'add')
+                                .text("Add to favorites");
+
+                        }, error => console.log(error));
+
+
                 }
             }, error => console.log(error));
         // console.log(itemID);

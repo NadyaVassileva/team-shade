@@ -35,6 +35,17 @@ export function findAllEvents() {
     return requester.get(url, headers);
 }
 
+export function findEventById(id) {
+    let headers = { 'Authorization': "Kinvey " + sessionStorage.getItem('authToken') };
+    let url = `${constants.MAIN_URL}${id}`;
+    return requester.get(url, headers);
+}
+
+export function updateFavorites(event) {
+    let headers = { 'Authorization': "Kinvey " + sessionStorage.getItem('authToken') };
+
+}
+
 
 /*
  PUT to /appdata/:appKey/:collectionName/:id, lets an app update a previously created entity.

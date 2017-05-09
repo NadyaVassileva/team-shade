@@ -125,10 +125,24 @@ function addListenersToButtons(events) {
     $('.saveButton').click((ev) => {
         let $this = $(ev.target);
 
-        
+        //1. GET ZAQVKA
+        let itemID = $this.attr('data-id');
+
+        eventData.findEventById(itemID)
+            .then(getResponse => {
+                console.log(getResponse);
+            }, error => console.log(error));
+        // console.log(itemID);
+
         if ($this.attr('data-actiontype') === "add") {
 
             //trqbva ni promise
+
+
+            // eventData.findEventById();
+
+            //2. PUT ZAQVKA ZA SLAGANE
+
             //kogato e gotovo THEN
             $this
                 .toggleClass('btn-primary')

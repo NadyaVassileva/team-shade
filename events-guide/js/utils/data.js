@@ -22,7 +22,6 @@ var app = {
     Kinvey.User.login(username, password)
       .then(function(response) {
 
-        //console.log(response);
         let authToken = response.data._kmd.authtoken;
         sessionStorage.setItem('authToken', authToken);
 

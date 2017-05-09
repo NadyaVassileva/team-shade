@@ -1,7 +1,6 @@
 class Helper {
 
    addUserButtons() {
-        console.log("User is logged!!!");
         $('#logout-button').removeClass('hidden');
         $('#login-button').addClass('hidden');
         $('#search-form').removeClass('hidden');
@@ -12,7 +11,6 @@ class Helper {
         $('#login-button').removeClass('hidden');
         $('#search-form').addClass('hidden');
         
-        console.log("User is logged out!!!");
    }
 
     toggleUserButtons() {

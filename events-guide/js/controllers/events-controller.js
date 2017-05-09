@@ -1,8 +1,6 @@
 import * as data from 'data';
 import * as templateLoader from 'templateLoader';
 import * as eventData from 'eventsData';
-import { kinveyFindEvents, kinveyFindEventsByCategory } from 'data';
-
 
 // to be updated
 class EventController {
@@ -56,7 +54,6 @@ export function loadAllEvents(context) {
             templateLoader.generate('events')
                 .then(template => {
                     let events = addResponseMetaData(response);
-                    console.log(events);
 
                     context.$element().html(template({ events }));
                     addListenersToButtons(events);
@@ -101,7 +98,6 @@ export function loadEventsByCategory(context, filter) {
                 .then(template => {
 
                     let events = addResponseMetaData(response);
-                    console.log(events);
 
                     context.$element().html(template({ events }));
 
@@ -122,7 +118,6 @@ function addListenersToButtons(events) {
 
         eventData.findEventById(itemID)
             .then(getResponse => {
-                console.log(getResponse);
 
                 if ($this.attr('data-actiontype') === "add") {
 
@@ -139,8 +134,6 @@ function addListenersToButtons(events) {
                     //2. PUT 
                     eventData.updateEventById(itemID, updatedEvent)
                         .then(putResponse => {
-                            console.log("PUT RESPONSE");
-                            console.log(putResponse);
 
                             $this
                                 .toggleClass('btn-primary')
@@ -170,14 +163,8 @@ function addListenersToButtons(events) {
 
                     }
 
-                    //2. PUT 
-
-                    //IF on the Favorites bar...add class hidden
                     eventData.updateEventById(itemID, updatedEvent)
                         .then(putResponse => {
-                            console.log("PUT RESPONSE");
-                            console.log(putResponse);
-                            console.log(window.location.hash);
                             if (window.location.hash === "#/favorites") {
                                 $(('#' + itemID)).addClass("hidden");
                             }

@@ -34,6 +34,6 @@ export function userRegister(context) {
             });
         }, error => {
             console.log(error);
-        })
+        });
 }
 

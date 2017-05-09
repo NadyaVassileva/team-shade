@@ -41,9 +41,10 @@ export function findEventById(id) {
     return requester.get(url, headers);
 }
 
-export function updateFavorites(event) {
+export function updateEventById(id, body) {
     let headers = { 'Authorization': "Kinvey " + sessionStorage.getItem('authToken') };
-
+    let url = `${constants.MAIN_URL}${id}`;
+    return requester.put(url, body, headers);
 }
 
 

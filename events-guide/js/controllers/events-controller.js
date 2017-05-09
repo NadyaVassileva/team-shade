@@ -124,6 +124,7 @@ export function loadEventsByCategory(context, filter) {
 function addListenersToButtons(events) {
     $('.saveButton').click((ev) => {
         let $this = $(ev.target);
+        let currentUser = sessionStorage.getItem('currentUser');
 
         //1. GET ZAQVKA
         let itemID = $this.attr('data-id');
@@ -131,40 +132,43 @@ function addListenersToButtons(events) {
         eventData.findEventById(itemID)
             .then(getResponse => {
                 console.log(getResponse);
+
+                if ($this.attr('data-actiontype') === "add") {
+
+                    //trqbva ni promise
+                    let updatedEvent = JSON.parse(JSON.stringify(getResponse));
+                    updatedEvent.location = updatedEvent.location + " NOV EXTENSION";
+
+                    //2. PUT ZAQVKA ZA SLAGANE
+                    eventData.updateEventById(itemID, updatedEvent)
+                        .then(putResponse => {
+                            console.log("PUT RESPONSE");
+                            console.log(putResponse);
+                            //kogato e gotovo THEN
+                            $this
+                                .toggleClass('btn-primary')
+                                .toggleClass('btn-danger')
+                                .attr('data-actiontype', 'remove')
+                                .text("Remove from favorites");
+
+                        }, error => console.log(error));
+
+
+
+                }
+                else {
+
+                    //2. PUT ZAQVKA ZA MAHANE                    
+                    //trqbva ni promise
+
+                    $this
+                        .toggleClass('btn-primary')
+                        .toggleClass('btn-danger')
+                        .attr('data-actiontype', 'add')
+                        .text("Add to favorites");
+                }
             }, error => console.log(error));
         // console.log(itemID);
-
-        if ($this.attr('data-actiontype') === "add") {
-
-            //trqbva ni promise
-
-
-            // eventData.findEventById();
-
-            //2. PUT ZAQVKA ZA SLAGANE
-
-            //kogato e gotovo THEN
-            $this
-                .toggleClass('btn-primary')
-                .toggleClass('btn-danger')
-                .attr('data-actiontype', 'remove')
-                .text("Remove from favorites");
-
-        }
-        else {
-
-            //trqbva ni promise
-
-            $this
-                .toggleClass('btn-primary')
-                .toggleClass('btn-danger')
-                .attr('data-actiontype', 'add')
-                .text("Add to favorites");
-        }
-
-        console.log(ev.target);
-        // console.log(events);
-
 
     });
 }

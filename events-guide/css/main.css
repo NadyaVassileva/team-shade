@@ -1,7 +1,3 @@
-body {
-  /*padding-top: 15px;*/
-}
-
 .login-container {
   margin-top: 80px;
 }
@@ -32,4 +28,22 @@ body {
 
 .hidden {
   display: none;
+}
+
+.picture {
+    border: 2px solid darkgrey;
+    margin: 50px;
+    width: 70%;
+}
+
+.event-container {
+    margin: 30px;
+}
+.event-presentation-description {
+  font-style: italic;
+  color: darkgray;
+}
+
+.event-characteristics {
+  width: 80%;
 }

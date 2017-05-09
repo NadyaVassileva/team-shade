@@ -1,9 +1,9 @@
 <div id="events-table" class="container">
     {{#each events}}
     <div class="event-container" id="{{this._id}}">
-        <img src="{{this.image}}" class="small" alt="some image">
+        <img src="{{this.image}}" class="small img-responsive img-rounded picture" alt="some image">
         <div class="event-characteristics">
-            <h4 class="event-presentation-name">{{this.name}}</h4>
+            <h2 class="event-presentation-name">{{this.name}}</h2>
             {{#if this.description}}
             <h4 class="event-presentation-description">{{this.description}}</h4>
             {{/if}}

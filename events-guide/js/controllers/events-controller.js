@@ -126,7 +126,7 @@ function addListenersToButtons(events) {
         let $this = $(ev.target);
         let currentUser = sessionStorage.getItem('currentUser');
 
-        //1. GET ZAQVKA
+        //1. GET 
         let itemID = $this.attr('data-id');
 
         eventData.findEventById(itemID)
@@ -135,11 +135,12 @@ function addListenersToButtons(events) {
 
                 if ($this.attr('data-actiontype') === "add") {
 
-                    //trqbva ni promise
+            
                     let updatedEvent = JSON.parse(JSON.stringify(getResponse));
-                    updatedEvent.location = updatedEvent.location + " NOV EXTENSION";
 
-                    //2. PUT ZAQVKA ZA SLAGANE
+                    updatedEvent.favorites += `,${currentUser}`;
+
+                    //2. PUT 
                     eventData.updateEventById(itemID, updatedEvent)
                         .then(putResponse => {
                             console.log("PUT RESPONSE");

@@ -9,7 +9,7 @@ function bootStrapActiveChange() {
     });
 
     $('.navbar-brand').on("click", () => {
-        $(".nav").find(".active").removeClass("active");        
+        $(".nav").find(".active").removeClass("active");
         $('#home').parent().addClass("active");
     });
 }
@@ -24,7 +24,22 @@ function ensureLogOutLogInWithPageRefresh() {
     });
 }
 
+function logOutEvent() {
+    $('#logout-button').on('click', function (event) {
+        event.preventDefault();
+        Kinvey.User.logout()
+            .then(response => {
+
+                helper.removeUserButtons();
+
+                sessionStorage.clear();
+                window.location.hash = "#/login";
+            });
+    });
+}
+
 export function loadAll() {
-    ensureLogOutLogInWithPageRefresh();
+    logOutEvent();
     bootStrapActiveChange();
+    ensureLogOutLogInWithPageRefresh();
 }

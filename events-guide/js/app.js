@@ -38,17 +38,7 @@ var sammyApp = Sammy('#container', function () {
 
   // this.notFound TO BE IMPLMENTED
 
-  $('#logout-button').on('click', function (event) {
-    event.preventDefault();
-    Kinvey.User.logout()
-      .then(response => {
 
-        helper.removeUserButtons();
-
-        sessionStorage.clear();
-        window.location.hash = "#/login";
-      });
-  });
 });
 
 sammyApp.run('#/');

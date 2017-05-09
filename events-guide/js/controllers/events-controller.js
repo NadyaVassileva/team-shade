@@ -16,7 +16,6 @@ class EventController {
 
 
 export function loadFavoriteEvents(context) {
-    // loadAllEvents(context); WORKING
 
     //TODO if sessionStorage is empty
     //redirect to Login!
@@ -106,8 +105,7 @@ export function loadEventsByCategory(context, filter) {
         .then(response => {
             templateLoader.generate('events')
                 .then(template => {
-                    // let events = response;
-                    //REFACTORED !!!
+
                     let events = addResponseMetaData(response);
                     console.log(events);
 
@@ -150,13 +148,17 @@ function addListenersToButtons(events) {
                         .then(putResponse => {
                             console.log("PUT RESPONSE");
                             console.log(putResponse);
-                            //kogato e gotovo THEN
+
                             $this
                                 .toggleClass('btn-primary')
                                 .toggleClass('btn-danger')
                                 .attr('data-actiontype', 'remove')
                                 .text("Remove from favorites");
 
+                            let countElement = $(('#' + itemID)).find(".data-counter");
+                            let newCount = parseInt(countElement.text()) + 1;
+                            countElement.text(newCount);
+  
                         }, error => console.log(error));
 
 
@@ -180,7 +182,6 @@ function addListenersToButtons(events) {
                         .then(putResponse => {
                             console.log("PUT RESPONSE");
                             console.log(putResponse);
-                            //kogato e gotovo THEN
 
                             $this
                                 .toggleClass('btn-primary')
@@ -188,13 +189,15 @@ function addListenersToButtons(events) {
                                 .attr('data-actiontype', 'add')
                                 .text("Add to favorites");
 
+                            let countElement = $(('#' + itemID)).find(".data-counter");
+                            let newCount = parseInt(countElement.text()) - 1;
+                            countElement.text(newCount);
+
                         }, error => console.log(error));
 
 
                 }
             }, error => console.log(error));
-        // console.log(itemID);
-
     });
 }
 

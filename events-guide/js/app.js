@@ -18,39 +18,23 @@ eventHandlers.loadAll();
 var sammyApp = Sammy('#container', function () {
   let $container = $('#container');
 
-  this.get('#/', function () {
-    this.redirect('#/home');
-  });
+  this.get('#/', () => this.redirect('#/home'));
 
   this.get('#/home', homeController.get);
 
-  this.get('#/login', function (context) {
-    userLogin(context);
-  });
+  this.get('#/login', (context) => userLogin(context));
 
-  this.get('#/register', function (context) {
-    userRegister(context);
-  });
+  this.get('#/register', (context) => userRegister(context));
 
-  this.get('#/cinema', function (context) {
-    eventsController.loadEventsByCategory(context, 'cinema');
-  });
+  this.get('#/cinema', (context) => eventsController.loadEventsByCategory(context, 'cinema'));
 
-  this.get('#/sport', function (context) {
-    eventsController.loadEventsByCategory(context, 'sport');
-  });
+  this.get('#/sport', (context) => eventsController.loadEventsByCategory(context, 'sport'));
 
-  this.get('#/theater', function (context) {
-    eventsController.loadEventsByCategory(context, 'theater');
-  });
+  this.get('#/theater', (context) => eventsController.loadEventsByCategory(context, 'theater'));
 
-  this.get('#/music', function (context) {
-    eventsController.loadEventsByCategory(context, 'music');
-  });
+  this.get('#/music', (context) => eventsController.loadEventsByCategory(context, 'music'));
 
-  this.get('#/favorites', function (context) {
-    eventsController.loadFavoriteEvents(context);
-  });
+  this.get('#/favorites', (context) => eventsController.loadFavoriteEvents(context));
 
   // this.notFound TO BE IMPLMENTED
 

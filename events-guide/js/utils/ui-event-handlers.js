@@ -17,11 +17,9 @@ function bootStrapActiveChange() {
 function ensureLogOutLogInWithPageRefresh() {
     $(document).ready(function () {
         if (sessionStorage.length !== 0) {
-            console.log("AFTER LOAD");
 
             helper.addUserButtons();
-            // $("#logout-button").removeClass('hidden');
-            // $('#login-button').addClass('hidden');
+
         }
     });
 }

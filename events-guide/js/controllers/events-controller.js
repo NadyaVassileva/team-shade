@@ -72,7 +72,7 @@ export function loadAllEvents(context) {
 function addResponseMetaData(response) {
     let events = response;
     let currentUser = sessionStorage.getItem('currentUser');
-    //favorited by currentUSer
+    
     events.forEach(event => {
 
         event.favoritesCount = 0;
@@ -80,9 +80,9 @@ function addResponseMetaData(response) {
 
         if (event.favorites) {
             let users = event.favorites.split(/[ ,]+/);
-            //FIRST PROPERTY
+            
             event.favoritesCount = users.length;
-            //SECOND PROPERTY
+            
             if (users.indexOf(currentUser) > -1) {
                 event.favoritedByCurrentUser = true;
             }
@@ -118,7 +118,6 @@ function addListenersToButtons(events) {
         let $this = $(ev.target);
         let currentUser = sessionStorage.getItem('currentUser');
 
-        //1. GET 
         let itemID = $this.attr('data-id');
 
         eventData.findEventById(itemID)

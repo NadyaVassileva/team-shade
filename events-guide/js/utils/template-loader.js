@@ -16,7 +16,7 @@ export function generate(templateName) {
             .then(template => {
                 const compiledTemplate = Handlebars.compile(template);
                 cacheObj[templateName] = compiledTemplate;
-                return Promise.resolve(compiledTemplate); //returns a FUNCTION
-            }); //vrushta ni PROMISE t.e. tuk shte imame gotov template function!
+                return Promise.resolve(compiledTemplate); 
+            }); 
     }
 }

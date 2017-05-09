@@ -1,4 +1,6 @@
 import 'jquery';
+import { helper } from 'helper';
+
 
 function bootStrapActiveChange() {
     $(".nav a").on("click", function () {
@@ -17,8 +19,9 @@ function ensureLogOutLogInWithPageRefresh() {
         if (sessionStorage.length !== 0) {
             console.log("AFTER LOAD");
 
-            $("#logout-button").removeClass('hidden');
-            $('#login-button').addClass('hidden');
+            helper.addUserButtons();
+            // $("#logout-button").removeClass('hidden');
+            // $('#login-button').addClass('hidden');
         }
     });
 }

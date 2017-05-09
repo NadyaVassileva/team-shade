@@ -10,6 +10,8 @@ import { kinveyLoadEventsByCategory } from 'eventsController';
 import { app } from 'data';
 
 import * as eventHandlers from 'eventHandlers';
+import { helper } from 'helper';
+
 
 eventHandlers.loadAll();
 
@@ -56,17 +58,13 @@ var sammyApp = Sammy('#container', function () {
     event.preventDefault();
     Kinvey.User.logout()
       .then(response => {
-        $('#logout-button').addClass('hidden');
-        $('#login-button').removeClass('hidden');
+
+        helper.removeUserButtons();
 
         sessionStorage.clear();
         window.location.hash = "#/login";
-
-        //need to redirect to home
-        console.log("User is logged out!!!");
       });
   });
-
 });
 
 sammyApp.run('#/');

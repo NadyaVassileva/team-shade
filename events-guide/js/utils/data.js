@@ -1,4 +1,6 @@
 import { constants } from 'constants';
+import { helper } from 'helper';
+
 
 var app = {
 
@@ -8,9 +10,6 @@ var app = {
 
     // Login
     '#login-form submit': 'login',
-
-    // Logout
-    '#logout-button click': 'logout',
   },
 
   login: function(event, username, password) {
@@ -31,11 +30,8 @@ var app = {
         sessionStorage.setItem('currentUser', currentUser);
 
         location.replace('#/home');
-        console.log("User is logged!!!");
-        $('#logout-button').removeClass('hidden');
-        $('#login-button').addClass('hidden');
+        helper.addUserButtons();
 
-        //$('#logout-button').addClass('hidden');
       })
       .catch(function(error) {
         $('#login-error').html('<p>' + error.message + '</p>').show(0);
@@ -58,9 +54,7 @@ var app = {
         sessionStorage.setItem('currentUser', currentUser);
 
         location.replace('#/home');
-        console.log("User is logged!!!");
-        $('#logout-button').removeClass('hidden');
-        $('#login-button').addClass('hidden');
+        helper.addUserButtons();
     })
     
         .catch(function(error) {
@@ -73,7 +67,6 @@ var app = {
     var allData = Kinvey.DataStore.collection('events');
 
       return allData.find();
-
     },
 
     kinveyFindEventsByCategory: function(category) {

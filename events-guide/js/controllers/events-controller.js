@@ -12,9 +12,6 @@ class EventController {
     }
 }
 
-
-
-
 export function loadFavoriteEvents(context) {
 
     //TODO if sessionStorage is empty
@@ -35,7 +32,6 @@ export function loadFavoriteEvents(context) {
                         context.$element().html(template({ events }));
                         addListenersToButtons(events);
 
-
                     }, error => {
                         console.log(error);
                     });
@@ -48,8 +44,6 @@ export function loadFavoriteEvents(context) {
                         console.log(error);
                     });
             }
-
-
 
         }, error => {
             console.log(error);

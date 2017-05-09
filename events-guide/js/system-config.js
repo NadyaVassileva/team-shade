@@ -19,6 +19,7 @@ SystemJS.config({
         'constants': 'js/utils/constants.js',
         'eventsData': 'js/utils/events-data.js',
         'eventHandlers' : 'js/utils/ui-event-handlers.js',
+        'helper' : 'js/utils/helper.js',
 
         //Controllers
         'homeController':'/js/controllers/home-controller.js',

@@ -158,7 +158,7 @@ function addListenersToButtons(events) {
                             let countElement = $(('#' + itemID)).find(".data-counter");
                             let newCount = parseInt(countElement.text()) + 1;
                             countElement.text(newCount);
-  
+
                         }, error => console.log(error));
 
 
@@ -178,20 +178,28 @@ function addListenersToButtons(events) {
                     }
 
                     //2. PUT 
+
+                    //IF on the Favorites bar...add class hidden
                     eventData.updateEventById(itemID, updatedEvent)
                         .then(putResponse => {
                             console.log("PUT RESPONSE");
                             console.log(putResponse);
+                            console.log(window.location.hash);
+                            if (window.location.hash === "#/favorites") {
+                                $(('#' + itemID)).addClass("hidden");
+                            }
+                            else {
+                                $this
+                                    .toggleClass('btn-primary')
+                                    .toggleClass('btn-danger')
+                                    .attr('data-actiontype', 'add')
+                                    .text("Add to favorites");
 
-                            $this
-                                .toggleClass('btn-primary')
-                                .toggleClass('btn-danger')
-                                .attr('data-actiontype', 'add')
-                                .text("Add to favorites");
+                                let countElement = $(('#' + itemID)).find(".data-counter");
+                                let newCount = parseInt(countElement.text()) - 1;
+                                countElement.text(newCount);
+                            }
 
-                            let countElement = $(('#' + itemID)).find(".data-counter");
-                            let newCount = parseInt(countElement.text()) - 1;
-                            countElement.text(newCount);
 
                         }, error => console.log(error));
 

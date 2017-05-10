@@ -18,9 +18,8 @@ eventHandlers.loadAll();
 var sammyApp = Sammy('#container', function () {
   let $container = $('#container');
 
-  this.get('#/', function () {
-    this.redirect('#/home');
-  }); //fix loading home?!
+  this.get('#/', () =>this.redirect('#/home'));
+  // }); //fix loading home?!
 
   this.get('#/home', homeController.get);
 
